@@ -1,4 +1,4 @@
-const NOME_CACHE = 'api-hotel-v8';
+const NOME_CACHE = 'api-hotel-v16';
 
 const ARQUIVOS_CACHE = [
   './html/index.html',

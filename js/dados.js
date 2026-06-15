@@ -1,12 +1,12 @@
 const CHAVE_QUARTOS = 'villareal_quartos';
 const CHAVE_VERSAO  = 'villareal_versao';
-const VERSAO_DADOS  = 'v4-api-hotel';
+const VERSAO_DADOS  = 'v5-api-hotel';
 
 const QUARTOS_INICIAIS = [
   {
     id: 'q1',
     titulo: 'Suíte Tripla',
-    tipo: 'Suíte',
+    tipo: 'Triplo',
     descricao: 'Espaçosa suíte com três camas confortáveis, ar-condicionado, Wi-Fi e café da manhã incluso. Ideal para grupos e famílias.',
     preco: 300,
     imagem: '../assets/imagens/quarto1.jpg',

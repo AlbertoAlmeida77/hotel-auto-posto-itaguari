@@ -20,7 +20,7 @@
       <a href="index.html" class="logo"><img src="../assets/imagens/logo-hotel.jpg" alt="Hotel Auto Posto Itaguari"></a>
       <nav class="nav-desktop">
         <a href="index.html">Início</a>
-        <a href="quartos-publico.html">Quartos</a>
+        <a href="#feed">Quartos</a>
         <a href="#comodidades">Comodidades</a>
         <a href="#contato">Contato</a>
         <a href="reserva.html" class="btn-primario" style="padding:0.55rem 1.25rem;font-size:0.88rem;">Reservar Agora</a>
@@ -34,7 +34,7 @@
     </div>
     <nav class="nav-mobile" id="navMobile">
       <a href="index.html">Início</a>
-      <a href="quartos-publico.html">Quartos</a>
+      <a href="#feed">Quartos</a>
       <a href="#comodidades">Comodidades</a>
       <a href="#contato">Contato</a>
       <a href="reserva.html" style="color:var(--dourado);font-weight:700;">🔑 Reservar Agora</a>
@@ -104,35 +104,9 @@
         <div class="secao-titulo" style="color:var(--branco);">Fale com a Comunidade</div>
         <div class="linha-dourada"></div>
         <p style="color:rgba(255,255,255,0.65);font-size:0.9rem;margin-bottom:1.5rem;">
-          Tem uma ideia de melhoria para o site ou para o hotel? Envie sua sugestão!
+          Tem uma ideia de melhoria para o site ou para o hotel? Vá até a aba <strong>Sugerir</strong> para enviar a sua ideia e ela aparecerá no mural da comunidade!
         </p>
-        <div id="msgSugestao"></div>
-        <form id="formSugestao" novalidate>
-          <div class="input-group" style="margin-bottom:0.85rem;">
-            <label for="sgNome" style="color:rgba(255,255,255,0.75);">Seu nome *</label>
-            <input type="text" id="sgNome" placeholder="Ex: João Silva" maxlength="50" required
-                   style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.2);color:#fff;">
-          </div>
-          <div class="input-group" style="margin-bottom:0.85rem;">
-            <label for="sgTipo" style="color:rgba(255,255,255,0.75);">Tipo de sugestão *</label>
-            <select id="sgTipo" required style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.2);color:#fff;">
-              <option value="">Selecione uma categoria</option>
-              <option value="Melhoria no Site">💻 Melhoria no Site</option>
-              <option value="Melhoria no Hotel">🏨 Melhoria no Hotel</option>
-              <option value="Novo Serviço">✨ Novo Serviço</option>
-              <option value="Elogio">👏 Elogio</option>
-              <option value="Reclamação">⚠️ Reclamação</option>
-              <option value="Outro">💬 Outro</option>
-            </select>
-          </div>
-          <div class="input-group" style="margin-bottom:1.25rem;">
-            <label for="sgMensagem" style="color:rgba(255,255,255,0.75);">Mensagem *</label>
-            <textarea id="sgMensagem" placeholder="Descreva sua sugestão com detalhes..."
-                      maxlength="300" required
-                      style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.2);color:#fff;min-height:5rem;"></textarea>
-          </div>
-          <button type="submit" class="btn-primario" style="width:100%;">✉️ Enviar Sugestão</button>
-        </form>
+        <a href="login.html?destino=cadastro" class="btn-primario" style="width:100%;text-align:center;display:block;">➕ Ir para a aba Sugerir</a>
       </div>
       <div class="sugestoes-lista-wrap">
         <div style="color:var(--dourado);font-weight:600;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1rem;">
@@ -171,7 +145,7 @@
           <div class="rodape-titulo">Navegação</div>
           <ul class="rodape-lista">
             <li><a href="index.html">Início</a></li>
-            <li><a href="quartos-publico.html">Quartos</a></li>
+            <li><a href="#feed">Quartos</a></li>
             <li><a href="reserva.html">Fazer Reserva</a></li>
             <li><a href="sobre.html">Sobre o Projeto</a></li>
           </ul>
@@ -198,7 +172,7 @@
     </a>
     <a href="login.html?destino=cadastro" class="nav-inferior-item">
       <span class="nav-inferior-icone">➕</span>
-      <span class="nav-inferior-texto">Cadastrar</span>
+      <span class="nav-inferior-texto">Sugerir</span>
     </a>
     <a href="sobre.html" class="nav-inferior-item">
       <span class="nav-inferior-icone">ℹ️</span>
@@ -227,10 +201,20 @@
         return;
       }
       lista.innerHTML = sugestoes.slice(0, 5).map(function (s) {
+        const iconesCategoria = {
+          'Melhoria no Site': '💻',
+          'Melhoria no Hotel': '🏨',
+          'Novo Serviço': '✨',
+          'Elogio': '👏',
+          'Reclamação': '⚠️',
+          'Outro': '💬'
+        };
+        const icone = iconesCategoria[s.tipo] || '💬';
+
         return `
           <div class="card-sugestao">
             <div class="card-sugestao-topo">
-              <span class="card-sugestao-tipo">${s.tipo}</span>
+              <span class="card-sugestao-tipo"><span style="margin-right:0.25rem; font-size:0.85rem;">${icone}</span> ${s.tipo}</span>
               <span class="card-sugestao-data">${new Date(s.data).toLocaleDateString('pt-BR')}</span>
             </div>
             <div class="card-sugestao-nome">${s.nome}</div>
@@ -255,30 +239,7 @@
       return nova;
     }
 
-    document.getElementById('formSugestao').addEventListener('submit', async function (e) {
-      e.preventDefault();
-      const nome     = document.getElementById('sgNome').value.trim();
-      const tipo     = document.getElementById('sgTipo').value;
-      const mensagem = document.getElementById('sgMensagem').value.trim();
-      const msgEl    = document.getElementById('msgSugestao');
-      const btn      = e.target.querySelector('button[type="submit"]');
 
-      if (!nome || !tipo || !mensagem) {
-        msgEl.innerHTML = '<div class="mensagem mensagem-erro" style="margin-bottom:0.75rem;">Preencha todos os campos.</div>';
-        return;
-      }
-
-      btn.disabled    = true;
-      btn.textContent = '⏳ Enviando...';
-      await salvarSugestao({ nome, tipo, mensagem });
-      if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
-      msgEl.innerHTML = '<div class="mensagem mensagem-sucesso" style="margin-bottom:0.75rem;">✅ Sugestão enviada! Obrigado.</div>';
-      e.target.reset();
-      renderizarSugestoes();
-      btn.disabled    = false;
-      btn.textContent = '✉️ Enviar Sugestão';
-      setTimeout(function () { msgEl.innerHTML = ''; }, 3000);
-    });
 
     document.addEventListener('DOMContentLoaded', renderizarSugestoes);
   </script>

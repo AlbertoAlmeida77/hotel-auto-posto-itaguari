@@ -89,7 +89,7 @@ function criarCardFeed(quarto) {
   };
   const primeirasComodidades = (quarto.comodidades || []).slice(0, 3);
   return `
-    <div class="card-quarto card-feed" onclick="irParaDetalhes('${quarto.id}')">
+    <div class="card-quarto card-feed">
       <div class="card-quarto-img">
         <img src="${quarto.imagem}" alt="${quarto.titulo}" loading="lazy"
              onerror="this.src='../assets/imagens/quarto1.jpg'">
@@ -110,10 +110,7 @@ function criarCardFeed(quarto) {
             <strong>R$ ${Number(quarto.preco).toLocaleString('pt-BR')}</strong>
             <small>por noite</small>
           </div>
-          <div style="display:flex;gap:0.5rem;">
-            <span class="btn-secundario" style="padding:0.5rem 0.85rem;font-size:0.82rem;cursor:pointer;" onclick="event.stopPropagation();irParaDetalhes('${quarto.id}')">Detalhes</span>
-            <a href="reserva.html?quarto=${quarto.id.replace('q','')}" class="btn-primario" style="padding:0.5rem 0.85rem;font-size:0.82rem;" onclick="event.stopPropagation()">Reservar</a>
-          </div>
+          <a href="reserva.html?quarto=${quarto.id.replace('q','')}" class="btn-primario" style="padding:0.5rem 0.85rem;font-size:0.82rem;">Reservar</a>
         </div>
       </div>
     </div>
@@ -200,7 +197,7 @@ if (typeof DeviceMotionEvent !== 'undefined' &&
   ativarSensorMovimento();
 }
 
-if ('serviceWorker' in navigator) {
+if ('serviceWorker' in navigator && window.location.protocol !== 'file:') {
   window.addEventListener('load', function () {
     navigator.serviceWorker
       .register('../sw.js')

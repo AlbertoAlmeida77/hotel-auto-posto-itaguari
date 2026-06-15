@@ -18,8 +18,8 @@
 
 /* ---- RESET ---- */
 *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
-html { font-size:16px; scroll-behavior:smooth; }
-body { font-family:'Inter',sans-serif; background:var(--bege); color:var(--texto); line-height:1.6; }
+html { font-size:16px; scroll-behavior:smooth; overflow-x:hidden; }
+body { font-family:'Inter',sans-serif; background:var(--bege); color:var(--texto); line-height:1.6; overflow-x:hidden; }
 img  { max-width:100%; display:block; }
 a    { text-decoration:none; color:inherit; }
 
@@ -58,6 +58,10 @@ h1,h2,h3 { font-family:'Playfair Display',serif; line-height:1.25; }
 .cabecalho.scrollado {
   background:var(--primaria);
   box-shadow:0 2px 16px rgba(0,0,0,0.2);
+}
+.cabecalho-interno {
+  background:var(--primaria) !important;
+  box-shadow:0 2px 16px rgba(0,0,0,0.2) !important;
 }
 .cabecalho-inner {
   display:flex; align-items:center; justify-content:space-between;
@@ -188,7 +192,7 @@ h1,h2,h3 { font-family:'Playfair Display',serif; line-height:1.25; }
 .info-item { display:flex; align-items:center; gap:0.3rem; font-size:0.82rem; color:var(--texto-claro); }
 .info-item svg { color:var(--dourado); flex-shrink:0; }
 .card-quarto-rodape { display:flex; align-items:center; justify-content:space-between; padding-top:1rem; border-top:1px solid var(--bege-escuro); }
-.card-quarto-preco strong { font-family:'Playfair Display',serif; font-size:1.4rem; color:var(--primaria); }
+.card-quarto-preco strong { font-family:'Inter',sans-serif; font-size:1.4rem; color:var(--primaria); font-weight:700; font-variant-numeric:tabular-nums; }
 .card-quarto-preco small { display:block; font-size:0.75rem; color:var(--texto-claro); }
 
 /* ============================================
@@ -304,7 +308,7 @@ h1,h2,h3 { font-family:'Playfair Display',serif; line-height:1.25; }
 .input-group select,
 .input-group textarea {
   padding:0.75rem 1rem; border:1.5px solid #e5e7eb;
-  border-radius:0.5rem; font-size:0.95rem; color:var(--texto);
+  border-radius:0.5rem; font-size:1rem; color:var(--texto);
   background:var(--branco); transition:border-color var(--transicao);
   font-family:'Inter',sans-serif; width:100%;
 }
@@ -656,10 +660,11 @@ body.dark-mode .detalhes-titulo { color: var(--texto); }
   flex-wrap: wrap;
 }
 .detalhes-preco-grande {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Inter', sans-serif;
   font-size: 2rem;
   color: var(--dourado);
   font-weight: 700;
+  font-variant-numeric: tabular-nums;
   margin-bottom: 0.25rem;
 }
 .detalhes-preco-grande small {
@@ -957,40 +962,67 @@ body.dark-mode .link-rede { background: var(--bege-escuro); color: var(--texto-c
 
 /* Cards de sugestões recebidas */
 .card-sugestao {
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(201,168,76,0.2);
+  background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.08);
   border-radius: var(--radius);
-  padding: 1rem;
-  margin-bottom: 0.75rem;
-  transition: background var(--transicao);
+  padding: 1.25rem;
+  margin-bottom: 0.85rem;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  backdrop-filter: blur(8px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
 }
-.card-sugestao:hover { background: rgba(255,255,255,0.1); }
+.card-sugestao::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; width: 4px; height: 100%;
+  background: var(--dourado);
+  opacity: 0.7;
+  transition: opacity var(--transicao);
+}
+.card-sugestao:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+  border-color: rgba(193, 59, 40, 0.3);
+}
+.card-sugestao:hover::before { opacity: 1; }
+
 .card-sugestao-topo {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.75rem;
 }
 .card-sugestao-tipo {
+  display: inline-flex;
+  align-items: center;
   font-size: 0.72rem;
   font-weight: 700;
-  color: var(--dourado);
+  color: #fff;
+  background: rgba(193, 59, 40, 0.25);
+  border: 1px solid rgba(193, 59, 40, 0.4);
+  padding: 0.3rem 0.65rem;
+  border-radius: 2rem;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
 }
 .card-sugestao-data {
   font-size: 0.72rem;
-  color: rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.4);
+  font-family: 'Inter', sans-serif;
 }
 .card-sugestao-nome {
-  font-size: 0.85rem;
+  font-size: 0.95rem;
   font-weight: 600;
-  color: rgba(255,255,255,0.85);
-  margin-bottom: 0.35rem;
+  color: rgba(255,255,255,0.95);
+  margin-bottom: 0.4rem;
+  font-family: 'Inter', sans-serif;
 }
 .card-sugestao-msg {
-  font-size: 0.82rem;
-  color: rgba(255,255,255,0.55);
-  line-height: 1.5;
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.65);
+  line-height: 1.6;
   margin: 0;
 }
