@@ -173,8 +173,11 @@
       msg.innerHTML   = '';
 
       try {
+        // Tenta disparar a vibração imediatamente para não perder o contexto de interação do usuário
+        if (window.navigator && window.navigator.vibrate) {
+          try { window.navigator.vibrate([500, 150, 500, 150, 800]); } catch(e) {}
+        }
         await salvarSugestao({ nome, tipo, mensagem });
-        if (navigator.vibrate) navigator.vibrate([400, 150, 400, 150, 600]);
         msg.innerHTML = `
           <div class="mensagem mensagem-sucesso">
             ✅ <strong>Sugestão enviada com sucesso!</strong><br>
