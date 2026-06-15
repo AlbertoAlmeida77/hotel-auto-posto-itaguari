@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acesso — Hotel Auto Posto Itaguari</title>
+  <link rel="manifest" href="../manifest.json">
+  <meta name="theme-color" content="#1a6b15">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <div class="container-login">
+    <form class="form-login" id="loginForm" novalidate>
+
+      <div class="form-login-logo">
+        <div class="logo"><img src="../assets/imagens/logo-hotel.jpg" alt="Hotel Auto Posto Itaguari"></div>
+        <p id="loginSubtitulo">Verificando acesso...</p>
+      </div>
+
+      <div id="mensagemLogin"></div>
+
+      <div class="input-group">
+        <label for="usuario">Usuário</label>
+        <input type="text" id="usuario" name="usuario" placeholder="Digite seu usuário" autocomplete="username" required>
+      </div>
+
+      <div class="input-group">
+        <label for="senha">Senha</label>
+        <input type="password" id="senha" name="senha" placeholder="Digite sua senha" autocomplete="current-password" required>
+      </div>
+
+      <button type="submit" class="btn-login" id="btnEntrar">Entrar com Senha</button>
+
+      <div class="separador-login" id="separadorBiometria" style="display:none;">
+        ou use sua digital
+      </div>
+
+      <button type="button" class="btn-biometria" id="btnBiometria" style="display:none;">
+        <span>🔏</span> Entrar com Digital / Face ID
+      </button>
+
+      <div style="text-align:center;margin-top:1.25rem;">
+        <a href="index.html" style="font-size:0.82rem;color:var(--texto-claro);">← Voltar ao site</a>
+      </div>
+
+    </form>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="../js/firebase-config.js"></script>
+  <script src="../js/biometria.js"></script>
+  <script>
+    const subtituloEl = document.getElementById('loginSubtitulo');
+    subtituloEl.textContent = 'Verifique sua identidade para cadastrar';
+
+    const formLogin    = document.getElementById('loginForm');
+    const btnEntrar    = document.getElementById('btnEntrar');
+    const btnBiometria = document.getElementById('btnBiometria');
+    const separador    = document.getElementById('separadorBiometria');
+    const msgEl        = document.getElementById('mensagemLogin');
+
+    (async function () {
+      const temBiometria = await biometriaDisponivel();
+      if (temBiometria) {
+        separador.style.display    = '';
+        btnBiometria.style.display = '';
+      }
+    })();
+
+    function mostrarMensagem(texto, tipo) {
+      tipo = tipo || 'erro';
+      msgEl.innerHTML = `<div class="mensagem mensagem-${tipo}">${texto}</div>`;
+    }
+
+    function redirecionarAposLogin() {
+      window.location.href = 'cadastro.html';
+    }
+
+    formLogin.addEventListener('submit', function (e) {
+      e.preventDefault();
+      const usuario = document.getElementById('usuario').value.trim();
+      const senha   = document.getElementById('senha').value.trim();
+      if (!usuario || !senha) {
+        mostrarMensagem('Preencha usuário e senha.');
+        return;
+      }
+      btnEntrar.textContent = 'Verificando...';
+      btnEntrar.disabled    = true;
+      setTimeout(function () {
+        if (usuario === 'admin' && senha === 'admin123') {
+          mostrarMensagem('✅ Acesso concedido!', 'sucesso');
+          setTimeout(redirecionarAposLogin, 800);
+        } else {
+          mostrarMensagem('❌ Usuário ou senha incorretos.');
+          btnEntrar.textContent = 'Entrar com Senha';
+          btnEntrar.disabled    = false;
+        }
+      }, 600);
+    });
+
+    btnBiometria.addEventListener('click', async function () {
+      btnBiometria.disabled    = true;
+      btnBiometria.textContent = '⏳ Aguardando sua digital...';
+      msgEl.innerHTML          = '';
+      try {
+        await verificarBiometria();
+        mostrarMensagem('✅ Biometria verificada!', 'sucesso');
+        setTimeout(redirecionarAposLogin, 800);
+      } catch (erro) {
+        let msg = 'Biometria não reconhecida.';
+        if (erro.name === 'NotAllowedError')       msg = '⚠️ Você cancelou ou o tempo expirou.';
+        else if (erro.name === 'NotSupportedError') msg = '⚠️ Biometria não suportada neste dispositivo.';
+        else if (erro.message)                      msg = erro.message;
+        mostrarMensagem(msg);
+        btnBiometria.disabled   = false;
+        btnBiometria.innerHTML  = '<span>🔏</span> Entrar com Digital / Face ID';
+      }
+    });
+  </script>
+
+</body>
+</html>

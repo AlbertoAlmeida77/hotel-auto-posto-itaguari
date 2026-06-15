@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Conheça os quartos do Hotel Auto Posto Itaguari em Itaguari, Goiás — opções para todos os perfis.">
+  <title>Quartos — Hotel Auto Posto Itaguari</title>
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+  <!-- ========== CABEÇALHO ========== -->
+  <header class="cabecalho" id="cabecalho">
+    <div class="container cabecalho-inner">
+      <a href="index.html" class="logo"><img src="../assets/imagens/logo-hotel.jpg" alt="Hotel Auto Posto Itaguari"></a>
+
+      <nav class="nav-desktop">
+        <a href="index.html">Início</a>
+        <a href="quartos-publico.html">Quartos</a>
+        <a href="index.html#comodidades">Comodidades</a>
+        <a href="index.html#contato">Contato</a>
+        <a href="reserva.html" class="btn-primario" style="padding:0.55rem 1.25rem;font-size:0.88rem;">Reservar Agora</a>
+      </nav>
+
+      <button class="btn-menu" id="btnMenu" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <nav class="nav-mobile" id="navMobile">
+      <a href="index.html">Início</a>
+      <a href="quartos-publico.html">Quartos</a>
+      <a href="index.html#comodidades">Comodidades</a>
+      <a href="index.html#contato">Contato</a>
+      <a href="reserva.html" style="color:var(--dourado);font-weight:700;">🔑 Reservar Agora</a>
+    </nav>
+  </header>
+
+  <!-- ========== QUARTOS PÚBLICOS ========== -->
+  <section class="pagina-quartos" id="quartos">
+    <div class="container">
+
+      <div class="pagina-quartos-header">
+        <div class="secao-titulo">Nossos Quartos</div>
+        <div class="linha-dourada" style="margin:0.75rem auto 1rem;"></div>
+        <p class="secao-subtitulo">Escolha a acomodação ideal para a sua estadia</p>
+      </div>
+
+      <!-- FILTROS -->
+      <div class="filtros" id="filtros">
+        <button class="filtro-btn ativo" data-tipo="todos">Todos</button>
+        <button class="filtro-btn" data-tipo="casal">Casal</button>
+        <button class="filtro-btn" data-tipo="luxo">Luxo</button>
+        <button class="filtro-btn" data-tipo="suite">Suíte</button>
+        <button class="filtro-btn" data-tipo="familia">Família</button>
+      </div>
+
+      <!-- GRID DE QUARTOS -->
+      <div class="quartos-grid" id="quartosGrid">
+
+        <!-- Casal Standard -->
+        <div class="card-quarto" data-tipo="casal">
+          <div class="card-quarto-img">
+            <img src="../assets/imagens/quarto-casal.png" alt="Quarto Casal Standard" loading="lazy">
+            <span class="card-quarto-tipo">Casal</span>
+          </div>
+          <div class="card-quarto-corpo">
+            <h3 class="card-quarto-nome">Quarto Casal Standard</h3>
+            <p class="card-quarto-desc">Conforto e praticidade para casais, com cama de casal, ar-condicionado e Wi-Fi.</p>
+            <div class="card-quarto-info">
+              <span class="info-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                2 hóspedes
+              </span>
+              <span class="info-item">🛏️ Cama casal</span>
+              <span class="info-item">📶 Wi-Fi</span>
+              <span class="info-item">❄️ Ar-cond.</span>
+            </div>
+            <div class="card-quarto-rodape">
+              <div class="card-quarto-preco">
+                <strong>R$ 280</strong>
+                <small>por noite</small>
+              </div>
+              <a href="reserva.html?quarto=1" class="btn-primario" style="padding:0.6rem 1.25rem;font-size:0.85rem;">Reservar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Luxo King -->
+        <div class="card-quarto" data-tipo="luxo">
+          <div class="card-quarto-img">
+            <img src="../assets/imagens/quarto-luxo.png" alt="Quarto Luxo King" loading="lazy">
+            <span class="card-quarto-tipo">Luxo</span>
+          </div>
+          <div class="card-quarto-corpo">
+            <h3 class="card-quarto-nome">Quarto Luxo King</h3>
+            <p class="card-quarto-desc">Espaço amplo com cama king size, banheira de imersão e vista panorâmica da cidade.</p>
+            <div class="card-quarto-info">
+              <span class="info-item">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                2 hóspedes
+              </span>
+              <span class="info-item">🛁 Banheira</span>
+              <span class="info-item">🍳 Café incluso</span>
+              <span class="info-item">📺 TV Smart</span>
+            </div>
+            <div class="card-quarto-rodape">
+              <div class="card-quarto-preco">
+                <strong>R$ 480</strong>
+                <small>por noite</small>
+              </div>
+              <a href="reserva.html?quarto=2" class="btn-primario" style="padding:0.6rem 1.25rem;font-size:0.85rem;">Reservar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Suíte Premium -->
+        <div class="card-quarto" data-tipo="suite">
+          <div class="card-quarto-img">
+            <img src="../assets/imagens/suite-premium.png" alt="Suíte Premium" loading="lazy">
+            <span class="card-quarto-tipo">Suíte</span>
+          </div>
+          <div class="card-quarto-corpo">
+            <h3 class="card-quarto-nome">Suíte Premium</h3>
+            <p class="card-quarto-desc">Nossa suíte mais completa com sala de estar separada, frigobar e serviço personalizado.</p>
+            <div class="card-quarto-info">
+              <span class="info-item">👥 até 4 hóspedes</span>
+              <span class="info-item">🛁 Banheira</span>
+              <span class="info-item">🥂 Frigobar</span>
+              <span class="info-item">🅿️ Estacionamento</span>
+            </div>
+            <div class="card-quarto-rodape">
+              <div class="card-quarto-preco">
+                <strong>R$ 750</strong>
+                <small>por noite</small>
+              </div>
+              <a href="reserva.html?quarto=3" class="btn-primario" style="padding:0.6rem 1.25rem;font-size:0.85rem;">Reservar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Família -->
+        <div class="card-quarto" data-tipo="familia">
+          <div class="card-quarto-img">
+            <img src="../assets/imagens/quarto-casal.png" alt="Quarto Família" loading="lazy">
+            <span class="card-quarto-tipo">Família</span>
+          </div>
+          <div class="card-quarto-corpo">
+            <h3 class="card-quarto-nome">Quarto Família</h3>
+            <p class="card-quarto-desc">Ideal para famílias com crianças. Duas camas de solteiro + cama de casal, espaço amplo.</p>
+            <div class="card-quarto-info">
+              <span class="info-item">👨‍👩‍👧 até 5 hóspedes</span>
+              <span class="info-item">🛏️ 3 camas</span>
+              <span class="info-item">📶 Wi-Fi</span>
+              <span class="info-item">❄️ Ar-cond.</span>
+            </div>
+            <div class="card-quarto-rodape">
+              <div class="card-quarto-preco">
+                <strong>R$ 560</strong>
+                <small>por noite</small>
+              </div>
+              <a href="reserva.html?quarto=4" class="btn-primario" style="padding:0.6rem 1.25rem;font-size:0.85rem;">Reservar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Luxo Twin -->
+        <div class="card-quarto" data-tipo="luxo">
+          <div class="card-quarto-img">
+            <img src="../assets/imagens/quarto-luxo.png" alt="Quarto Luxo Twin" loading="lazy">
+            <span class="card-quarto-tipo">Luxo</span>
+          </div>
+          <div class="card-quarto-corpo">
+            <h3 class="card-quarto-nome">Quarto Luxo Twin</h3>
+            <p class="card-quarto-desc">Duas camas de solteiro premium com decoração refinada e banheiro completo.</p>
+            <div class="card-quarto-info">
+              <span class="info-item">👥 2 hóspedes</span>
+              <span class="info-item">🛏️ 2 camas</span>
+              <span class="info-item">☕ Café incluso</span>
+              <span class="info-item">📺 TV Smart</span>
+            </div>
+            <div class="card-quarto-rodape">
+              <div class="card-quarto-preco">
+                <strong>R$ 420</strong>
+                <small>por noite</small>
+              </div>
+              <a href="reserva.html?quarto=5" class="btn-primario" style="padding:0.6rem 1.25rem;font-size:0.85rem;">Reservar</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Suíte Master -->
+        <div class="card-quarto" data-tipo="suite">
+          <div class="card-quarto-img">
+            <img src="../assets/imagens/suite-premium.png" alt="Suíte Master" loading="lazy">
+            <span class="card-quarto-tipo">Suíte</span>
+          </div>
+          <div class="card-quarto-corpo">
+            <h3 class="card-quarto-nome">Suíte Master</h3>
+            <p class="card-quarto-desc">Experiência máxima com jacuzzi privativa, varanda exclusiva e mordomo sob solicitação.</p>
+            <div class="card-quarto-info">
+              <span class="info-item">👥 2 hóspedes</span>
+              <span class="info-item">🛁 Jacuzzi</span>
+              <span class="info-item">🥂 Frigobar premium</span>
+              <span class="info-item">🌅 Varanda</span>
+            </div>
+            <div class="card-quarto-rodape">
+              <div class="card-quarto-preco">
+                <strong>R$ 1.200</strong>
+                <small>por noite</small>
+              </div>
+              <a href="reserva.html?quarto=6" class="btn-primario" style="padding:0.6rem 1.25rem;font-size:0.85rem;">Reservar</a>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /quartos-grid -->
+    </div>
+  </section>
+
+  <!-- ========== RODAPÉ ========== -->
+  <footer class="rodape" id="contato">
+    <div class="container">
+      <div class="rodape-grid">
+        <div class="rodape-marca">
+          <a href="index.html" class="logo"><img src="../assets/imagens/logo-hotel.jpg" alt="Hotel Auto Posto Itaguari"></a>
+          <p>Hospitalidade, conforto e elegância em cada detalhe. Bem-vindo ao seu lar longe de casa.</p>
+        </div>
+        <div>
+          <div class="rodape-titulo">Navegação</div>
+          <ul class="rodape-lista">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="quartos-publico.html">Quartos</a></li>
+            <li><a href="reserva.html">Fazer Reserva</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="rodape-titulo">Contato</div>
+          <ul class="rodape-lista">
+            <li>📍 Rodovia 154, km 26</li>
+            <li>📞 (62) 3396-1105</li>
+            <li>✉️ postoitaguari@gmail.com</li>
+            <li style="margin-top:0.5rem;"><a href="login.html" style="opacity:0.4;font-size:0.78rem;">Área Administrativa</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="rodape-base">
+        &copy; 2025 Hotel Auto Posto Itaguari. Todos os direitos reservados. | Projeto Acadêmico TCC
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/inicio.js"></script>
+  <script>
+    // Filtros de quartos
+    const filtros = document.querySelectorAll('.filtro-btn');
+    const cards   = document.querySelectorAll('.card-quarto[data-tipo]');
+
+    filtros.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filtros.forEach(b => b.classList.remove('ativo'));
+        btn.classList.add('ativo');
+        const tipo = btn.dataset.tipo;
+        cards.forEach(card => {
+          card.style.display = (tipo === 'todos' || card.dataset.tipo === tipo) ? '' : 'none';
+        });
+      });
+    });
+  </script>
+</body>
+</html>

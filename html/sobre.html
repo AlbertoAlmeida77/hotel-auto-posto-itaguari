@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sobre o Hotel Auto Posto Itaguari — conheça o projeto e a equipe de desenvolvimento">
+  <title>Sobre — Hotel Auto Posto Itaguari</title>
+  <link rel="manifest" href="../manifest.json">
+  <meta name="theme-color" content="#1a6b15">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="apple-touch-icon" href="../icons/icon-192.svg">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="tem-nav-inferior pagina-sobre">
+
+  <!-- ========== MINI CABEÇALHO ========== -->
+  <header class="cabecalho scrollado" style="position:relative;">
+    <div class="container cabecalho-inner">
+      <a href="index.html" class="logo"><img src="../assets/imagens/logo-hotel.jpg" alt="Hotel Auto Posto Itaguari"></a>
+      <div class="cabecalho-acoes">
+        <button id="btnTema" class="btn-tema" aria-label="Alternar tema">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ========== HERO DA PÁGINA SOBRE ========== -->
+    <div class="sobre-hero">
+      <div class="sobre-hero-logo"><img src="../assets/imagens/logo-hotel.jpg" alt="Hotel Auto Posto Itaguari" style="height:5rem;width:auto;margin:0 auto;"></div>
+      <p>
+        Uma solução tecnológica desenvolvida para modernizar a gestão e ampliar
+        a presença digital do Hotel Auto Posto Itaguari — localizado em Itaguari, Goiás.
+      </p>
+    </div>
+
+    <!-- ========== SOBRE O PROJETO ========== -->
+    <div class="sobre-secao">
+      <div class="container" style="max-width:42rem;">
+        <div class="sobre-secao-titulo">📋 Sobre o Projeto</div>
+        <p>
+          O projeto tem como propósito desenvolver uma solução tecnológica para um hotel real
+          localizado em <strong>Itaguari, Goiás</strong>, buscando modernizar a gestão,
+          melhorar os processos internos e aumentar a procura pelos serviços.
+        </p>
+        <p>
+          Foi desenvolvido por <strong>Alberto Almeida Silva Moreira</strong>, estudante de
+          <strong>Sistemas de Informação</strong>, com o objetivo de aplicar a tecnologia em um
+          negócio real e contribuir para sua inovação e crescimento.
+        </p>
+      </div>
+    </div>
+
+    <!-- ========== RECURSOS DO APP ========== -->
+    <div class="sobre-secao" style="background:var(--bege);">
+      <div class="container" style="max-width:42rem;">
+        <div class="sobre-secao-titulo">⚡ Recursos Implementados</div>
+
+        <div style="display:flex;flex-direction:column;gap:0.75rem;">
+          <!-- Cada recurso é um item da lista -->
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;">
+            <span style="font-size:1.3rem;flex-shrink:0;">📱</span>
+            <div>
+              <strong>PWA Instalável</strong>
+              <p style="font-size:0.85rem;color:var(--texto-claro);margin:0;">
+                Pode ser instalado na tela inicial do celular como um app nativo.
+                Funciona offline graças ao Service Worker.
+              </p>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;">
+            <span style="font-size:1.3rem;flex-shrink:0;">🌙</span>
+            <div>
+              <strong>Modo Escuro / Claro</strong>
+              <p style="font-size:0.85rem;color:var(--texto-claro);margin:0;">
+                Alterne o tema pelo botão no cabeçalho. A preferência é salva e mantida entre sessões.
+              </p>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;">
+            <span style="font-size:1.3rem;flex-shrink:0;">📳</span>
+            <div>
+              <strong>Vibração no Cadastro</strong>
+              <p style="font-size:0.85rem;color:var(--texto-claro);margin:0;">
+                O celular vibra ao cadastrar um novo quarto, confirmando o sucesso da operação.
+              </p>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;">
+            <span style="font-size:1.3rem;flex-shrink:0;">🔄</span>
+            <div>
+              <strong>Sensor de Movimento</strong>
+              <p style="font-size:0.85rem;color:var(--texto-claro);margin:0;">
+                Chacoalhe o celular para atualizar o feed (na tela Início) ou limpar o formulário (em Cadastro).
+              </p>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;">
+            <span style="font-size:1.3rem;flex-shrink:0;">🔏</span>
+            <div>
+              <strong>Biometria (Digital / Face ID)</strong>
+              <p style="font-size:0.85rem;color:var(--texto-claro);margin:0;">
+                A tela de cadastro é protegida por autenticação biométrica via WebAuthn —
+                a mesma tecnologia usada por bancos digitais.
+              </p>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:0.75rem;align-items:flex-start;">
+            <span style="font-size:1.3rem;flex-shrink:0;">☁️</span>
+            <div>
+              <strong>Persistência de Dados</strong>
+              <p style="font-size:0.85rem;color:var(--texto-claro);margin:0;">
+                Dados salvos localmente (localStorage) e na nuvem (Firebase Firestore)
+                para sincronização entre dispositivos.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== EQUIPE DE DESENVOLVEDORES ========== -->
+    <div class="sobre-secao">
+      <div class="container" style="max-width:42rem;">
+        <div class="sobre-secao-titulo">👨‍💻 Desenvolvedor</div>
+        <p style="font-size:0.85rem;">
+          Projeto desenvolvido por estudante do curso de Sistemas de Informação.
+        </p>
+      </div>
+    </div>
+
+    <!-- Card do desenvolvedor -->
+    <div class="devs-grid" style="max-width:42rem;margin:0 auto;">
+
+      <div class="card-dev">
+        <div class="card-dev-foto">
+          <img src="../assets/imagens/alberto.jpg" alt="Foto de Alberto Almeida Silva Moreira"
+               onerror="this.parentElement.innerHTML='👨‍💻'">
+        </div>
+        <div class="card-dev-nome">Alberto Almeida Silva Moreira</div>
+        <div class="card-dev-papel">Estudante de Sistemas de Informação</div>
+        <p class="card-dev-bio">
+          Responsável pelo desenvolvimento completo do projeto — estrutura PWA,
+          integração com Firebase, recursos mobile (vibração, biometria, sensor de movimento)
+          e aplicação de tecnologia em um negócio real.
+        </p>
+        <div class="card-dev-redes">
+          <a href="https://www.linkedin.com/in/albertoo-almeidaa" target="_blank" rel="noopener" class="link-rede">
+            <span>LinkedIn</span>
+            <span class="link-rede-icone">💼</span>
+          </a>
+          <a href="https://www.instagram.com/albertoo_asm/" target="_blank" rel="noopener" class="link-rede">
+            <span>Instagram</span>
+            <span class="link-rede-icone">📸</span>
+          </a>
+          <a href="mailto:alberto.moreira@aluno.ueg.br" class="link-rede">
+            <span>E-mail</span>
+            <span class="link-rede-icone">✉️</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ========== INFORMAÇÕES TÉCNICAS DO PWA ========== -->
+    <div class="pwa-info">
+      <div class="container" style="max-width:42rem;">
+
+        <div style="color:var(--dourado);font-weight:600;font-size:0.8rem;
+                    text-transform:uppercase;letter-spacing:0.08em;
+                    margin-bottom:1rem;">
+          ⚙️ Informações Técnicas
+        </div>
+
+        <div class="pwa-info-item">
+          <span class="pwa-info-label">Versão do App</span>
+          <span class="pwa-info-valor">1.0.0</span>
+        </div>
+        <div class="pwa-info-item">
+          <span class="pwa-info-label">Tecnologias</span>
+          <span class="pwa-info-valor">HTML5 · CSS3 · JS</span>
+        </div>
+        <div class="pwa-info-item">
+          <span class="pwa-info-label">Banco Local</span>
+          <span class="pwa-info-valor">localStorage</span>
+        </div>
+        <div class="pwa-info-item">
+          <span class="pwa-info-label">Banco Nuvem</span>
+          <span class="pwa-info-valor">Firebase Firestore</span>
+        </div>
+        <div class="pwa-info-item">
+          <span class="pwa-info-label">Autenticação</span>
+          <span class="pwa-info-valor">WebAuthn (FIDO2)</span>
+        </div>
+        <div class="pwa-info-item">
+          <span class="pwa-info-label">Hospedagem</span>
+          <span class="pwa-info-valor">GitHub Pages</span>
+        </div>
+        <!-- Service Worker status — atualizado pelo JS -->
+        <div class="pwa-info-item">
+          <span class="pwa-info-label">Service Worker</span>
+          <span class="pwa-info-valor" id="swStatus">Verificando...</span>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ========== BARRA DE NAVEGAÇÃO INFERIOR ========== -->
+  <nav class="nav-inferior" aria-label="Navegação principal">
+    <a href="index.html" class="nav-inferior-item">
+      <span class="nav-inferior-icone">🏠</span>
+      <span class="nav-inferior-texto">Início</span>
+    </a>
+    <a href="login.html?destino=cadastro" class="nav-inferior-item">
+      <span class="nav-inferior-icone">➕</span>
+      <span class="nav-inferior-texto">Cadastrar</span>
+    </a>
+    <a href="sobre.html" class="nav-inferior-item ativo">
+      <span class="nav-inferior-icone">ℹ️</span>
+      <span class="nav-inferior-texto">Sobre</span>
+    </a>
+  </nav>
+
+  <!-- ========== SCRIPTS ========== -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="../js/firebase-config.js"></script>
+  <script src="../js/inicio.js"></script>
+
+  <script>
+    /* Verifica o status do Service Worker e mostra na página */
+    const swStatusEl = document.getElementById('swStatus');
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.getRegistration().then(function (reg) {
+        if (reg) {
+          swStatusEl.textContent = '✅ Ativo (offline OK)';
+          swStatusEl.style.color = '#4ade80';
+        } else {
+          swStatusEl.textContent = '⚠️ Não registrado';
+        }
+      });
+    } else {
+      swStatusEl.textContent = '❌ Não suportado';
+    }
+  </script>
+
+</body>
+</html>

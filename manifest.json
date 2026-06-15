@@ -1,0 +1,43 @@
+{
+  "name": "Hotel Auto Posto Itaguari",
+  "short_name": "Hotel Auto Posto Itaguari",
+  "description": "Feed de quartos e serviços do Hotel Auto Posto Itaguari em Itaguari, Goiás — na palma da mão",
+  "start_url": "./html/index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#1a6b15",
+  "theme_color": "#1a6b15",
+  "orientation": "portrait-primary",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "./icons/icon-192.svg",
+      "sizes": "192x192",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "./icons/icon-512.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["travel", "lifestyle"],
+  "shortcuts": [
+    {
+      "name": "Ver Quartos",
+      "short_name": "Quartos",
+      "description": "Ver quartos disponíveis no feed",
+      "url": "./html/index.html",
+      "icons": [{ "src": "./icons/icon-192.svg", "sizes": "192x192" }]
+    },
+    {
+      "name": "Cadastrar",
+      "short_name": "Cadastrar",
+      "description": "Adicionar novo quarto ao feed",
+      "url": "./html/login.html?destino=cadastro",
+      "icons": [{ "src": "./icons/icon-192.svg", "sizes": "192x192" }]
+    }
+  ]
+}

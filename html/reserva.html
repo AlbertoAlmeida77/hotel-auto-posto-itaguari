@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Faça sua reserva no Hotel Auto Posto Itaguari de forma rápida e segura.">
+  <title>Reserva — Hotel Auto Posto Itaguari</title>
+  <link rel="stylesheet" href="../css/style.css">
+  <style>
+    .pagina-reserva {
+      min-height: 100vh;
+      padding: 7rem 0 4rem;
+      background: var(--bege);
+    }
+    .reserva-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .reserva-grid {
+      display: grid;
+      gap: 2.5rem;
+      max-width: 56rem;
+      margin: 0 auto;
+    }
+    @media(min-width: 768px) {
+      .reserva-grid { grid-template-columns: 1.4fr 1fr; align-items: start; }
+    }
+    .reserva-form-card {
+      background: var(--branco);
+      border-radius: var(--radius);
+      box-shadow: var(--sombra);
+      padding: 2.5rem 2rem;
+    }
+    .reserva-form-titulo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.3rem;
+      color: var(--primaria);
+      margin-bottom: 1.75rem;
+      padding-bottom: 1rem;
+      border-bottom: 2px solid var(--bege-escuro);
+    }
+    .form-duas-colunas {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    .form-linha-simples { grid-column: 1 / -1; }
+    .btn-reservar {
+      width: 100%;
+      padding: 1rem;
+      background: var(--dourado);
+      color: #ffffff;
+      border: none;
+      border-radius: var(--radius);
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: var(--transicao);
+      margin-top: 1.5rem;
+      letter-spacing: 0.03em;
+    }
+    .btn-reservar:hover {
+      background: var(--dourado-claro);
+      transform: translateY(-2px);
+      box-shadow: var(--sombra);
+    }
+    .reserva-resumo {
+      background: var(--primaria);
+      border-radius: var(--radius);
+      padding: 2rem 1.75rem;
+      color: var(--branco);
+      position: sticky;
+      top: 6rem;
+    }
+    .resumo-titulo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--dourado);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+    }
+    .resumo-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: 0.9rem;
+    }
+    .resumo-item span:first-child { color: rgba(255,255,255,0.65); }
+    .resumo-item span:last-child { font-weight: 600; }
+    .resumo-total {
+      margin-top: 1.25rem;
+      padding-top: 1rem;
+      border-top: 2px solid rgba(193,59,40,0.4);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .resumo-total span:first-child { font-size: 0.85rem; color: rgba(255,255,255,0.65); }
+    .resumo-total strong { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--dourado); }
+    .reserva-aviso {
+      margin-top: 1.5rem;
+      background: rgba(193,59,40,0.10);
+      border: 1px solid rgba(193,59,40,0.28);
+      border-radius: 0.5rem;
+      padding: 1rem;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
+    }
+    .reserva-aviso strong { color: var(--dourado); }
+    .modal-sucesso {
+      display: none;
+      position: fixed; inset: 0; z-index: 999;
+      background: rgba(0,0,0,0.6);
+      align-items: center; justify-content: center;
+      padding: 1.25rem;
+    }
+    .modal-sucesso.visivel { display: flex; }
+    .modal-sucesso-card {
+      background: var(--branco);
+      border-radius: 1rem;
+      padding: 3rem 2.5rem;
+      text-align: center;
+      max-width: 28rem;
+      width: 100%;
+      animation: popIn 0.4s cubic-bezier(0.34,1.56,0.64,1) both;
+    }
+    @keyframes popIn { from { transform: scale(0.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+    .modal-icone { font-size: 3.5rem; margin-bottom: 1rem; }
+    .modal-titulo { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--primaria); margin-bottom: 0.75rem; }
+    .modal-desc { color: var(--texto-claro); font-size: 0.95rem; line-height: 1.7; margin-bottom: 2rem; }
+  </style>
+</head>
+<body>
+
+  <header class="cabecalho" id="cabecalho">
+    <div class="container cabecalho-inner">
+      <a href="index.html" class="logo"><img src="../assets/imagens/logo-hotel.jpg" alt="Hotel Auto Posto Itaguari"></a>
+      <nav class="nav-desktop">
+        <a href="index.html">Início</a>
+        <a href="quartos-publico.html">Quartos</a>
+        <a href="index.html#comodidades">Comodidades</a>
+        <a href="index.html#contato">Contato</a>
+        <a href="reserva.html" class="btn-primario" style="padding:0.55rem 1.25rem;font-size:0.88rem;">Reservar Agora</a>
+      </nav>
+      <button class="btn-menu" id="btnMenu" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="nav-mobile" id="navMobile">
+      <a href="index.html">Início</a>
+      <a href="quartos-publico.html">Quartos</a>
+      <a href="index.html#comodidades">Comodidades</a>
+      <a href="index.html#contato">Contato</a>
+      <a href="reserva.html" style="color:var(--dourado);font-weight:700;">🔑 Reservar Agora</a>
+    </nav>
+  </header>
+
+  <section class="pagina-reserva" id="reservar">
+    <div class="container">
+
+      <div class="reserva-header">
+        <div class="secao-titulo">Solicitar Reserva</div>
+        <div class="linha-dourada" style="margin:0.75rem auto 1rem;"></div>
+        <p class="secao-subtitulo">Preencha o formulário — confirmaremos em até 24 horas</p>
+      </div>
+
+      <div class="reserva-grid">
+
+        <div class="reserva-form-card">
+          <div class="reserva-form-titulo">Dados da Reserva</div>
+
+          <form id="formReserva" novalidate>
+            <div class="form-duas-colunas">
+
+              <div class="input-group form-linha-simples">
+                <label for="nomeHospede">Nome completo *</label>
+                <input type="text" id="nomeHospede" name="nomeHospede" placeholder="Seu nome completo" required>
+              </div>
+
+              <div class="input-group">
+                <label for="emailHospede">E-mail *</label>
+                <input type="email" id="emailHospede" name="emailHospede" placeholder="seu@email.com" required>
+              </div>
+
+              <div class="input-group">
+                <label for="telefoneHospede">Telefone</label>
+                <input type="tel" id="telefoneHospede" name="telefoneHospede" placeholder="(00) 00000-0000">
+              </div>
+
+              <div class="input-group">
+                <label for="tipoQuarto">Quarto *</label>
+                <select id="tipoQuarto" name="tipoQuarto" required>
+                  <option value="">Selecione...</option>
+                  <option value="1">Suíte Tripla — R$ 300/noite</option>
+                  <option value="2">Suíte Dupla — R$ 200/noite</option>
+                  <option value="3">Quarto Simples — R$ 100/noite</option>
+                </select>
+              </div>
+
+              <div class="input-group">
+                <label for="numHospedes">Nº de hóspedes</label>
+                <select id="numHospedes" name="numHospedes">
+                  <option value="1">1 hóspede</option>
+                  <option value="2" selected>2 hóspedes</option>
+                  <option value="3">3 hóspedes</option>
+                </select>
+              </div>
+
+              <div class="input-group">
+                <label for="dataEntrada">Check-in *</label>
+                <input type="date" id="dataEntrada" name="dataEntrada" required>
+              </div>
+
+              <div class="input-group">
+                <label for="dataSaida">Check-out *</label>
+                <input type="date" id="dataSaida" name="dataSaida" required>
+              </div>
+
+              <div class="input-group form-linha-simples">
+                <label for="observacoes">Observações</label>
+                <textarea id="observacoes" name="observacoes" placeholder="Pedidos especiais, aniversários, necessidades específicas..."></textarea>
+              </div>
+
+            </div>
+
+            <div id="msgReserva"></div>
+
+            <button type="submit" class="btn-reservar" id="btnReservar">
+              🔑 Solicitar Reserva
+            </button>
+          </form>
+        </div>
+
+        <div class="reserva-resumo">
+          <div class="resumo-titulo">📋 Resumo</div>
+          <div class="resumo-item">
+            <span>Quarto</span>
+            <span id="resumoQuarto">—</span>
+          </div>
+          <div class="resumo-item">
+            <span>Check-in</span>
+            <span id="resumoEntrada">—</span>
+          </div>
+          <div class="resumo-item">
+            <span>Check-out</span>
+            <span id="resumoSaida">—</span>
+          </div>
+          <div class="resumo-item">
+            <span>Noites</span>
+            <span id="resumoNoites">—</span>
+          </div>
+          <div class="resumo-item">
+            <span>Hóspedes</span>
+            <span id="resumoHospedes">—</span>
+          </div>
+          <div class="resumo-total">
+            <span>Total estimado</span>
+            <strong id="resumoTotal">—</strong>
+          </div>
+          <div class="reserva-aviso">
+            <strong>ℹ️ Como funciona:</strong><br>
+            Após o envio, nossa equipe confirmará a disponibilidade e entrará em contato em até 24 horas. O pagamento é realizado no check-in.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="modal-sucesso" id="modalSucesso">
+    <div class="modal-sucesso-card">
+      <div class="modal-icone">🎉</div>
+      <div class="modal-titulo">Reserva Solicitada!</div>
+      <p class="modal-desc">
+        Obrigado! Sua solicitação foi enviada com sucesso.<br>
+        Nossa equipe confirmará em até <strong>24 horas</strong> pelo e-mail informado.
+      </p>
+      <a href="index.html" class="btn-primario" style="display:inline-block;">← Voltar ao início</a>
+    </div>
+  </div>
+
+  <footer class="rodape" id="contato">
+    <div class="container">
+      <div class="rodape-grid">
+        <div class="rodape-marca">
+          <a href="index.html" class="logo"><img src="../assets/imagens/logo-hotel.jpg" alt="Hotel Auto Posto Itaguari"></a>
+          <p>Hospitalidade, conforto e praticidade em Itaguari, Goiás.</p>
+        </div>
+        <div>
+          <div class="rodape-titulo">Navegação</div>
+          <ul class="rodape-lista">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="quartos-publico.html">Quartos</a></li>
+            <li><a href="reserva.html">Fazer Reserva</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="rodape-titulo">Contato</div>
+          <ul class="rodape-lista">
+            <li>📍 Itaguari, Goiás</li>
+            <li>✉️ contato@apihotel.com.br</li>
+            <li style="margin-top:0.5rem;"><a href="login.html" style="opacity:0.4;font-size:0.78rem;">Área Administrativa</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="rodape-base">
+        &copy; 2026 Auto Posto Hotel Auto Posto Itaguari. Todos os direitos reservados. | Projeto Acadêmico TCC
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="../js/firebase-config.js"></script>
+  <script src="../js/inicio.js"></script>
+  <script>
+    const CHAVE_RESERVAS = 'villareal_reservas';
+
+    const precos = { '1': 300, '2': 200, '3': 100 };
+    const nomesQuarto = { '1': 'Suíte Tripla', '2': 'Suíte Dupla', '3': 'Quarto Simples' };
+
+    function fmtData(val) {
+      if (!val) return '—';
+      const [y, m, d] = val.split('-');
+      return d + '/' + m + '/' + y;
+    }
+
+    function atualizarResumo() {
+      const quarto   = document.getElementById('tipoQuarto').value;
+      const entrada  = document.getElementById('dataEntrada').value;
+      const saida    = document.getElementById('dataSaida').value;
+      const hospedes = document.getElementById('numHospedes').value;
+
+      document.getElementById('resumoQuarto').textContent   = nomesQuarto[quarto] || '—';
+      document.getElementById('resumoEntrada').textContent  = fmtData(entrada);
+      document.getElementById('resumoSaida').textContent    = fmtData(saida);
+      document.getElementById('resumoHospedes').textContent = hospedes ? hospedes + ' hóspede(s)' : '—';
+
+      if (quarto && entrada && saida) {
+        const noites = Math.round((new Date(saida) - new Date(entrada)) / 86400000);
+        if (noites > 0) {
+          document.getElementById('resumoNoites').textContent = noites + ' noite(s)';
+          document.getElementById('resumoTotal').textContent  = 'R$ ' + (noites * precos[quarto]).toLocaleString('pt-BR');
+          return;
+        }
+      }
+      document.getElementById('resumoNoites').textContent = '—';
+      document.getElementById('resumoTotal').textContent  = '—';
+    }
+
+    async function salvarReserva(dados) {
+      const reservas = JSON.parse(localStorage.getItem(CHAVE_RESERVAS) || '[]');
+      const novaReserva = Object.assign({}, dados, {
+        id:       'r' + Date.now(),
+        status:   'pendente',
+        criadoEm: new Date().toISOString()
+      });
+      reservas.unshift(novaReserva);
+      localStorage.setItem(CHAVE_RESERVAS, JSON.stringify(reservas));
+
+      if (window.db) {
+        try {
+          await window.db.collection('reservas').add(Object.assign({}, novaReserva, {
+            criadoEm: firebase.firestore.FieldValue.serverTimestamp()
+          }));
+        } catch (e) {
+          console.warn('Reserva salva só localmente:', e.message);
+        }
+      }
+      return novaReserva;
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    const quartoParam = params.get('quarto');
+    if (quartoParam) {
+      document.getElementById('tipoQuarto').value = quartoParam;
+      atualizarResumo();
+    }
+
+    const hoje = new Date().toISOString().split('T')[0];
+    document.getElementById('dataEntrada').min = hoje;
+    document.getElementById('dataSaida').min   = hoje;
+
+    ['tipoQuarto','dataEntrada','dataSaida','numHospedes'].forEach(function(id) {
+      document.getElementById(id).addEventListener('change', atualizarResumo);
+    });
+    atualizarResumo();
+
+    document.getElementById('formReserva').addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const nome     = document.getElementById('nomeHospede').value.trim();
+      const email    = document.getElementById('emailHospede').value.trim();
+      const quarto   = document.getElementById('tipoQuarto').value;
+      const entrada  = document.getElementById('dataEntrada').value;
+      const saida    = document.getElementById('dataSaida').value;
+      const hospedes = document.getElementById('numHospedes').value;
+      const obs      = document.getElementById('observacoes').value.trim();
+      const msg      = document.getElementById('msgReserva');
+      const btn      = document.getElementById('btnReservar');
+
+      if (!nome || !email || !quarto || !entrada || !saida) {
+        msg.innerHTML = '<div class="mensagem mensagem-erro">⚠️ Preencha todos os campos obrigatórios.</div>';
+        return;
+      }
+      if (new Date(saida) <= new Date(entrada)) {
+        msg.innerHTML = '<div class="mensagem mensagem-erro">⚠️ Check-out deve ser posterior ao check-in.</div>';
+        return;
+      }
+
+      btn.disabled    = true;
+      btn.textContent = '⏳ Enviando...';
+      msg.innerHTML   = '';
+
+      const noites = Math.round((new Date(saida) - new Date(entrada)) / 86400000);
+
+      await salvarReserva({
+        nome, email,
+        telefone:      document.getElementById('telefoneHospede').value.trim(),
+        quarto:        nomesQuarto[quarto],
+        quartoId:      quarto,
+        hospedes,
+        dataEntrada:   entrada,
+        dataSaida:     saida,
+        noites,
+        total:         noites * precos[quarto],
+        observacoes:   obs
+      });
+
+      if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
+
+      btn.disabled    = false;
+      btn.textContent = '🔑 Solicitar Reserva';
+
+      document.getElementById('modalSucesso').classList.add('visivel');
+    });
+  </script>
+</body>
+</html>

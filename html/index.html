@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hotel Auto Posto Itaguari — Feed de quartos disponíveis e serviços em Itaguari, Goiás.">
+  <title>Hotel Auto Posto Itaguari — Início</title>
+  <link rel="manifest" href="../manifest.json">
+  <meta name="theme-color" content="#1a6b15">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Hotel Auto Posto Itaguari">
+  <link rel="apple-touch-icon" href="../icons/icon-192.svg">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="tem-nav-inferior">
+
+  <header class="cabecalho" id="cabecalho">
+    <div class="container cabecalho-inner">
+      <a href="index.html" class="logo"><img src="../assets/imagens/logo-hotel.jpg" alt="Hotel Auto Posto Itaguari"></a>
+      <nav class="nav-desktop">
+        <a href="index.html">Início</a>
+        <a href="quartos-publico.html">Quartos</a>
+        <a href="#comodidades">Comodidades</a>
+        <a href="#contato">Contato</a>
+        <a href="reserva.html" class="btn-primario" style="padding:0.55rem 1.25rem;font-size:0.88rem;">Reservar Agora</a>
+      </nav>
+      <div class="cabecalho-acoes">
+        <button id="btnTema" class="btn-tema" aria-label="Ativar modo escuro" title="Alternar tema">🌙</button>
+        <button class="btn-menu" id="btnMenu" aria-label="Abrir menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+    <nav class="nav-mobile" id="navMobile">
+      <a href="index.html">Início</a>
+      <a href="quartos-publico.html">Quartos</a>
+      <a href="#comodidades">Comodidades</a>
+      <a href="#contato">Contato</a>
+      <a href="reserva.html" style="color:var(--dourado);font-weight:700;">🔑 Reservar Agora</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="inicio">
+    <div class="hero-bg"></div>
+    <div class="container hero-conteudo">
+      <div class="hero-badge">✦ Desde 2005</div>
+      <h1>Bem-vindo ao <span>Hotel Auto Posto Itaguari</span></h1>
+      <p class="hero-descricao">
+        Uma experiência de hospedagem onde conforto, elegância e hospitalidade se encontram.
+        Veja nossos quartos disponíveis no feed abaixo.
+      </p>
+      <div class="hero-botoes">
+        <a href="#feed" class="btn-primario">Ver Quartos Disponíveis</a>
+        <a href="#sobre" class="btn-secundario">Conheça o Hotel</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="feed-section" id="feed">
+    <div class="container">
+      <div class="secao-cabecalho">
+        <div class="secao-titulo">Feed de Quartos</div>
+        <div class="linha-dourada"></div>
+        <p class="secao-subtitulo" id="feedStatus">Carregando quartos...</p>
+      </div>
+      <div class="quartos-grid" id="feedQuartos"></div>
+      <div style="text-align:center;margin-top:2.5rem;">
+        <a href="quartos-publico.html" class="btn-secundario">Ver Todos os Quartos</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="comodidades" id="comodidades">
+    <div class="container">
+      <div class="secao-titulo">Comodidades do Hotel</div>
+      <div class="linha-dourada"></div>
+      <p class="secao-subtitulo">Tudo que você precisa para uma estadia perfeita</p>
+      <div class="comodidades-grid">
+        <div class="comodidade-item"><span class="comodidade-icone">☕</span><span class="comodidade-nome">Café da Manhã</span></div>
+        <div class="comodidade-item"><span class="comodidade-icone">📶</span><span class="comodidade-nome">Wi-Fi Gratuito</span></div>
+        <div class="comodidade-item"><span class="comodidade-icone">🅿️</span><span class="comodidade-nome">Estacionamento</span></div>
+        <div class="comodidade-item"><span class="comodidade-icone">❄️</span><span class="comodidade-nome">Ar-condicionado</span></div>
+        <div class="comodidade-item"><span class="comodidade-icone">📺</span><span class="comodidade-nome">TV a Cabo</span></div>
+        <div class="comodidade-item"><span class="comodidade-icone">🥂</span><span class="comodidade-nome">Frigobar</span></div>
+        <div class="comodidade-item"><span class="comodidade-icone">♿</span><span class="comodidade-nome">Acessibilidade</span></div>
+        <div class="comodidade-item"><span class="comodidade-icone">🔒</span><span class="comodidade-nome">Segurança 24h</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding:4rem 0;background:var(--bege);" id="reservar">
+    <div class="container" style="text-align:center;max-width:38rem;">
+      <div class="secao-titulo">Pronto para se hospedar?</div>
+      <div class="linha-dourada" style="margin:0.75rem auto 1.5rem;"></div>
+      <p class="secao-subtitulo">Faça sua reserva agora mesmo. Nossa equipe confirma em até 24 horas.</p>
+      <a href="reserva.html" class="btn-primario" style="font-size:1.05rem;padding:1rem 2.5rem;">Solicitar Reserva</a>
+    </div>
+  </section>
+
+  <section class="sugestoes-section" id="sugestoes">
+    <div class="container sugestoes-container">
+      <div class="sugestoes-form-wrap">
+        <div class="secao-titulo" style="color:var(--branco);">Fale com a Comunidade</div>
+        <div class="linha-dourada"></div>
+        <p style="color:rgba(255,255,255,0.65);font-size:0.9rem;margin-bottom:1.5rem;">
+          Tem uma ideia de melhoria para o site ou para o hotel? Envie sua sugestão!
+        </p>
+        <div id="msgSugestao"></div>
+        <form id="formSugestao" novalidate>
+          <div class="input-group" style="margin-bottom:0.85rem;">
+            <label for="sgNome" style="color:rgba(255,255,255,0.75);">Seu nome *</label>
+            <input type="text" id="sgNome" placeholder="Ex: João Silva" maxlength="50" required
+                   style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.2);color:#fff;">
+          </div>
+          <div class="input-group" style="margin-bottom:0.85rem;">
+            <label for="sgTipo" style="color:rgba(255,255,255,0.75);">Tipo de sugestão *</label>
+            <select id="sgTipo" required style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.2);color:#fff;">
+              <option value="">Selecione uma categoria</option>
+              <option value="Melhoria no Site">💻 Melhoria no Site</option>
+              <option value="Melhoria no Hotel">🏨 Melhoria no Hotel</option>
+              <option value="Novo Serviço">✨ Novo Serviço</option>
+              <option value="Elogio">👏 Elogio</option>
+              <option value="Reclamação">⚠️ Reclamação</option>
+              <option value="Outro">💬 Outro</option>
+            </select>
+          </div>
+          <div class="input-group" style="margin-bottom:1.25rem;">
+            <label for="sgMensagem" style="color:rgba(255,255,255,0.75);">Mensagem *</label>
+            <textarea id="sgMensagem" placeholder="Descreva sua sugestão com detalhes..."
+                      maxlength="300" required
+                      style="background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.2);color:#fff;min-height:5rem;"></textarea>
+          </div>
+          <button type="submit" class="btn-primario" style="width:100%;">✉️ Enviar Sugestão</button>
+        </form>
+      </div>
+      <div class="sugestoes-lista-wrap">
+        <div style="color:var(--dourado);font-weight:600;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:1rem;">
+          📋 Sugestões Recentes
+        </div>
+        <div id="listaSugestoes">
+          <p style="color:rgba(255,255,255,0.35);font-size:0.85rem;">Nenhuma sugestão ainda. Seja o primeiro!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sobre" id="sobre">
+    <div class="container sobre-grid">
+      <div class="sobre-texto">
+        <div class="secao-titulo">Uma tradição em <br>hospitalidade</div>
+        <div class="linha-dourada"></div>
+        <p>O Hotel Auto Posto Itaguari nasceu da paixão por receber bem. Localizado em Itaguari, Goiás, oferecemos uma experiência única que combina conforto, praticidade e hospitalidade.</p>
+        <p>Cada detalhe foi pensado para que sua estadia seja inesquecível — do café da manhã ao atendimento dedicado e quartos confortáveis.</p>
+        <a href="sobre.html" class="btn-primario" style="margin-top:1.5rem;">Sobre o Projeto</a>
+      </div>
+      <div class="sobre-imagem-wrap">
+        <img src="../assets/imagens/recepcao.png" alt="Recepção Hotel Auto Posto Itaguari" loading="lazy">
+      </div>
+    </div>
+  </section>
+
+  <footer class="rodape" id="contato">
+    <div class="container">
+      <div class="rodape-grid">
+        <div class="rodape-marca">
+          <a href="index.html" class="logo"><img src="../assets/imagens/logo-hotel.jpg" alt="Hotel Auto Posto Itaguari"></a>
+          <p>Hospitalidade, conforto e praticidade em Itaguari, Goiás.</p>
+        </div>
+        <div>
+          <div class="rodape-titulo">Navegação</div>
+          <ul class="rodape-lista">
+            <li><a href="index.html">Início</a></li>
+            <li><a href="quartos-publico.html">Quartos</a></li>
+            <li><a href="reserva.html">Fazer Reserva</a></li>
+            <li><a href="sobre.html">Sobre o Projeto</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="rodape-titulo">Contato</div>
+          <ul class="rodape-lista">
+            <li>📍 Rodovia 154, km 26</li>
+            <li>📞 (62) 3396-1105</li>
+            <li>✉️ postoitaguari@gmail.com</li>
+          </ul>
+        </div>
+      </div>
+      <div class="rodape-base">
+        &copy; 2026 Hotel Auto Posto Itaguari. Todos os direitos reservados. | Projeto Acadêmico TCC
+      </div>
+    </div>
+  </footer>
+
+  <nav class="nav-inferior" aria-label="Navegação principal">
+    <a href="index.html" class="nav-inferior-item ativo">
+      <span class="nav-inferior-icone">🏠</span>
+      <span class="nav-inferior-texto">Início</span>
+    </a>
+    <a href="login.html?destino=cadastro" class="nav-inferior-item">
+      <span class="nav-inferior-icone">➕</span>
+      <span class="nav-inferior-texto">Cadastrar</span>
+    </a>
+    <a href="sobre.html" class="nav-inferior-item">
+      <span class="nav-inferior-icone">ℹ️</span>
+      <span class="nav-inferior-texto">Sobre</span>
+    </a>
+  </nav>
+
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="../js/firebase-config.js"></script>
+  <script src="../js/dados.js"></script>
+  <script src="../js/inicio.js"></script>
+
+  <script>
+    const CHAVE_SUGESTOES = 'villareal_sugestoes';
+
+    function buscarSugestoes() {
+      return JSON.parse(localStorage.getItem(CHAVE_SUGESTOES) || '[]');
+    }
+
+    function renderizarSugestoes() {
+      const lista     = document.getElementById('listaSugestoes');
+      const sugestoes = buscarSugestoes();
+      if (sugestoes.length === 0) {
+        lista.innerHTML = '<p style="color:rgba(255,255,255,0.35);font-size:0.85rem;">Nenhuma sugestão ainda. Seja o primeiro!</p>';
+        return;
+      }
+      lista.innerHTML = sugestoes.slice(0, 5).map(function (s) {
+        return `
+          <div class="card-sugestao">
+            <div class="card-sugestao-topo">
+              <span class="card-sugestao-tipo">${s.tipo}</span>
+              <span class="card-sugestao-data">${new Date(s.data).toLocaleDateString('pt-BR')}</span>
+            </div>
+            <div class="card-sugestao-nome">${s.nome}</div>
+            <p class="card-sugestao-msg">${s.mensagem}</p>
+          </div>
+        `;
+      }).join('');
+    }
+
+    async function salvarSugestao(dados) {
+      const sugestoes = buscarSugestoes();
+      const nova = { ...dados, id: 'sg' + Date.now(), data: new Date().toISOString() };
+      sugestoes.unshift(nova);
+      localStorage.setItem(CHAVE_SUGESTOES, JSON.stringify(sugestoes));
+      if (window.db) {
+        try {
+          await window.db.collection('sugestoes').add({ ...nova, criadoEm: firebase.firestore.FieldValue.serverTimestamp() });
+        } catch (e) {
+          console.warn('Nuvem indisponível:', e.message);
+        }
+      }
+      return nova;
+    }
+
+    document.getElementById('formSugestao').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const nome     = document.getElementById('sgNome').value.trim();
+      const tipo     = document.getElementById('sgTipo').value;
+      const mensagem = document.getElementById('sgMensagem').value.trim();
+      const msgEl    = document.getElementById('msgSugestao');
+      const btn      = e.target.querySelector('button[type="submit"]');
+
+      if (!nome || !tipo || !mensagem) {
+        msgEl.innerHTML = '<div class="mensagem mensagem-erro" style="margin-bottom:0.75rem;">Preencha todos os campos.</div>';
+        return;
+      }
+
+      btn.disabled    = true;
+      btn.textContent = '⏳ Enviando...';
+      await salvarSugestao({ nome, tipo, mensagem });
+      if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
+      msgEl.innerHTML = '<div class="mensagem mensagem-sucesso" style="margin-bottom:0.75rem;">✅ Sugestão enviada! Obrigado.</div>';
+      e.target.reset();
+      renderizarSugestoes();
+      btn.disabled    = false;
+      btn.textContent = '✉️ Enviar Sugestão';
+      setTimeout(function () { msgEl.innerHTML = ''; }, 3000);
+    });
+
+    document.addEventListener('DOMContentLoaded', renderizarSugestoes);
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Cadastrar novo quarto — Hotel Auto Posto Itaguari">
+  <title>Cadastrar Quarto — Hotel Auto Posto Itaguari</title>
+  <link rel="manifest" href="../manifest.json">
+  <meta name="theme-color" content="#1a6b15">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="apple-touch-icon" href="../icons/icon-192.svg">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="tem-nav-inferior">
+
+  <header class="cabecalho scrollado" style="position:relative;">
+    <div class="container cabecalho-inner">
+      <a href="index.html" class="logo"><img src="../assets/imagens/logo-hotel.jpg" alt="Hotel Auto Posto Itaguari"></a>
+      <div class="cabecalho-acoes">
+        <button id="btnTema" class="btn-tema" aria-label="Alternar tema">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="pagina-cadastro">
+
+    <div class="pagina-cadastro-header">
+      <div class="secao-titulo">Cadastrar Quarto</div>
+      <div class="linha-dourada" style="margin:0.75rem auto 0.5rem;"></div>
+      <p style="color:var(--texto-claro);font-size:0.9rem;margin:0 auto;max-width:28rem;">
+        Preencha os dados do quarto para adicioná-lo ao feed da comunidade.
+      </p>
+    </div>
+
+    <div class="container" style="max-width:42rem;padding:0 1.25rem;">
+      <div class="mensagem mensagem-info" style="margin-bottom:1rem;font-size:0.85rem;">
+        💡 <strong>Dica:</strong> chacoalhe o celular para limpar todos os campos!
+      </div>
+    </div>
+
+    <section class="secao-formulario">
+      <div class="container" style="max-width:42rem;">
+        <form class="form-container" id="formCadastro" novalidate>
+
+          <div class="form-titulo">📋 Informações do Quarto</div>
+          <div id="mensagemCadastro"></div>
+
+          <div class="form-grid">
+
+            <div class="input-group" style="grid-column:1/-1;">
+              <label for="nomeQuarto">Nome do Quarto *</label>
+              <input type="text" id="nomeQuarto" name="nomeQuarto"
+                     placeholder="Ex: Suíte Presidencial, Quarto Standard..."
+                     maxlength="60" required>
+              <div class="contador-chars" id="contadorNome">0 / 60</div>
+            </div>
+
+            <div class="input-group">
+              <label for="tipoQuarto">Tipo *</label>
+              <select id="tipoQuarto" name="tipoQuarto" required>
+                <option value="">Selecione o tipo</option>
+                <option value="Casal">Casal</option>
+                <option value="Solteiro">Solteiro</option>
+                <option value="Luxo">Luxo</option>
+                <option value="Suíte">Suíte</option>
+                <option value="Família">Família</option>
+                <option value="Outro">Outro</option>
+              </select>
+            </div>
+
+            <div class="input-group">
+              <label for="numeroQuarto">Número do Quarto</label>
+              <input type="text" id="numeroQuarto" name="numeroQuarto" placeholder="Ex: 101, 205...">
+            </div>
+
+            <div class="input-group">
+              <label for="precoQuarto">Preço por Noite (R$) *</label>
+              <input type="number" id="precoQuarto" name="precoQuarto" placeholder="Ex: 350" min="1" step="1" required>
+            </div>
+
+            <div class="input-group">
+              <label for="capacidadeQuarto">Capacidade (hóspedes) *</label>
+              <select id="capacidadeQuarto" name="capacidadeQuarto" required>
+                <option value="">Selecione</option>
+                <option value="1">1 hóspede</option>
+                <option value="2">2 hóspedes</option>
+                <option value="3">3 hóspedes</option>
+                <option value="4">4 hóspedes</option>
+                <option value="5">5 hóspedes</option>
+                <option value="6">6+ hóspedes</option>
+              </select>
+            </div>
+
+            <div class="input-group">
+              <label for="statusQuarto">Status *</label>
+              <select id="statusQuarto" name="statusQuarto" required>
+                <option value="disponivel">✅ Disponível</option>
+                <option value="ocupado">🔴 Ocupado</option>
+                <option value="manutencao">🔧 Em Manutenção</option>
+              </select>
+            </div>
+
+            <div class="input-group" style="grid-column:1/-1;">
+              <label for="descricaoQuarto">Descrição *</label>
+              <textarea id="descricaoQuarto" name="descricaoQuarto"
+                        placeholder="Descreva o quarto: características, diferenciais, vista, decoração..."
+                        maxlength="300" required></textarea>
+              <div class="contador-chars" id="contadorDesc">0 / 300</div>
+            </div>
+
+            <div class="input-group" style="grid-column:1/-1;">
+              <label for="imagemQuarto">URL da Imagem (opcional)</label>
+              <input type="url" id="imagemQuarto" name="imagemQuarto"
+                     placeholder="https://exemplo.com/foto-do-quarto.jpg">
+            </div>
+
+          </div>
+
+          <div class="input-group" style="margin-top:1.25rem;">
+            <label>Comodidades</label>
+            <div class="checkboxes-grid" style="margin-top:0.5rem;">
+              <label class="check-item"><input type="checkbox" name="comodidades" value="Wi-Fi"> Wi-Fi</label>
+              <label class="check-item"><input type="checkbox" name="comodidades" value="Café da manhã"> Café da manhã</label>
+              <label class="check-item"><input type="checkbox" name="comodidades" value="Ar-condicionado"> Ar-condicionado</label>
+              <label class="check-item"><input type="checkbox" name="comodidades" value="TV Smart"> TV Smart</label>
+              <label class="check-item"><input type="checkbox" name="comodidades" value="Frigobar"> Frigobar</label>
+              <label class="check-item"><input type="checkbox" name="comodidades" value="Banheira"> Banheira</label>
+              <label class="check-item"><input type="checkbox" name="comodidades" value="Estacionamento"> Estacionamento</label>
+              <label class="check-item"><input type="checkbox" name="comodidades" value="Acessibilidade"> Acessibilidade</label>
+              <label class="check-item"><input type="checkbox" name="comodidades" value="Jacuzzi"> Jacuzzi</label>
+              <label class="check-item"><input type="checkbox" name="comodidades" value="Varanda"> Varanda</label>
+            </div>
+          </div>
+
+          <div style="margin-top:1.75rem;display:flex;flex-direction:column;gap:0.75rem;">
+            <button type="submit" class="btn-enviar" id="btnEnviar">✓ Cadastrar Quarto no Feed</button>
+            <button type="button" class="btn-cancelar" id="btnLimpar" onclick="limparFormulario()">Limpar campos</button>
+            <button type="button" class="btn-sensor" id="btnSensor">📳 Ativar sensor: chacoalhar para limpar</button>
+          </div>
+
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <nav class="nav-inferior" aria-label="Navegação principal">
+    <a href="index.html" class="nav-inferior-item">
+      <span class="nav-inferior-icone">🏠</span>
+      <span class="nav-inferior-texto">Início</span>
+    </a>
+    <a href="login.html?destino=cadastro" class="nav-inferior-item ativo">
+      <span class="nav-inferior-icone">➕</span>
+      <span class="nav-inferior-texto">Cadastrar</span>
+    </a>
+    <a href="sobre.html" class="nav-inferior-item">
+      <span class="nav-inferior-icone">ℹ️</span>
+      <span class="nav-inferior-texto">Sobre</span>
+    </a>
+  </nav>
+
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="../js/firebase-config.js"></script>
+  <script src="../js/dados.js"></script>
+  <script src="../js/inicio.js"></script>
+
+  <script>
+    function ativarContador(inputId, contadorId, max) {
+      const input    = document.getElementById(inputId);
+      const contador = document.getElementById(contadorId);
+      if (!input || !contador) return;
+      input.addEventListener('input', function () {
+        const atual = input.value.length;
+        contador.textContent = atual + ' / ' + max;
+        contador.style.color = atual > max * 0.9 ? '#ef4444' : '';
+      });
+    }
+
+    ativarContador('nomeQuarto',      'contadorNome', 60);
+    ativarContador('descricaoQuarto', 'contadorDesc', 300);
+
+    function limparFormulario() {
+      document.getElementById('formCadastro').reset();
+      document.getElementById('contadorNome').textContent      = '0 / 60';
+      document.getElementById('contadorDesc').textContent      = '0 / 300';
+      document.getElementById('mensagemCadastro').innerHTML    = '';
+    }
+
+    document.getElementById('formCadastro').addEventListener('submit', async function (e) {
+      e.preventDefault();
+      const btn = document.getElementById('btnEnviar');
+      const msg = document.getElementById('mensagemCadastro');
+
+      const nome      = document.getElementById('nomeQuarto').value.trim();
+      const tipo      = document.getElementById('tipoQuarto').value;
+      const numero    = document.getElementById('numeroQuarto').value.trim();
+      const preco     = document.getElementById('precoQuarto').value;
+      const capac     = document.getElementById('capacidadeQuarto').value;
+      const status    = document.getElementById('statusQuarto').value;
+      const descricao = document.getElementById('descricaoQuarto').value.trim();
+      const imagem    = document.getElementById('imagemQuarto').value.trim();
+      const checkboxes  = document.querySelectorAll('input[name="comodidades"]:checked');
+      const comodidades = Array.from(checkboxes).map(function (cb) { return cb.value; });
+
+      if (!nome || !tipo || !preco || !capac || !descricao) {
+        msg.innerHTML = '<div class="mensagem mensagem-erro">Preencha todos os campos obrigatórios (*).</div>';
+        return;
+      }
+
+      btn.disabled    = true;
+      btn.textContent = '⏳ Salvando...';
+      msg.innerHTML   = '';
+
+      try {
+        const dadosQuarto = {
+          titulo: nome, tipo, numero: numero || '---',
+          preco, capacidade: capac, status, descricao,
+          imagem: imagem || '', comodidades
+        };
+        const novoQuarto = await salvarNovoQuarto(dadosQuarto);
+        if (navigator.vibrate) navigator.vibrate([150, 80, 150]);
+        msg.innerHTML = `
+          <div class="mensagem mensagem-sucesso">
+            ✅ <strong>Quarto cadastrado com sucesso!</strong><br>
+            <small>"${novoQuarto.titulo}" foi adicionado ao feed.</small>
+          </div>`;
+        setTimeout(function () {
+          limparFormulario();
+          setTimeout(function () { window.location.href = 'index.html'; }, 800);
+        }, 2000);
+      } catch (erro) {
+        msg.innerHTML = `<div class="mensagem mensagem-erro">❌ Erro ao salvar: ${erro.message}</div>`;
+      } finally {
+        btn.disabled    = false;
+        btn.textContent = '✓ Cadastrar Quarto no Feed';
+      }
+    });
+  </script>
+
+</body>
+</html>

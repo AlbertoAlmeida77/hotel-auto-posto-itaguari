@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Detalhes do quarto — Hotel Auto Posto Itaguari">
+  <title>Detalhes — Hotel Auto Posto Itaguari</title>
+  <link rel="manifest" href="../manifest.json">
+  <meta name="theme-color" content="#1a6b15">
+  <meta name="mobile-web-app-capable" content="yes">
+  <link rel="apple-touch-icon" href="../icons/icon-192.svg">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body class="tem-nav-inferior pagina-detalhes">
+
+  <!-- ========== MINI CABEÇALHO ========== -->
+  <header class="cabecalho scrollado" style="position:relative;">
+    <div class="container cabecalho-inner">
+      <!-- Botão de voltar -->
+      <a href="index.html" class="btn-voltar" style="color:white;">
+        ← Voltar
+      </a>
+      <a href="index.html" class="logo"><img src="../assets/imagens/logo-hotel.jpg" alt="Hotel Auto Posto Itaguari"></a>
+      <div class="cabecalho-acoes">
+        <button id="btnTema" class="btn-tema" aria-label="Alternar tema">🌙</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== CONTEÚDO PRINCIPAL ========== -->
+  <main>
+    <!-- Estado: carregando -->
+    <div id="estadoCarregando" style="text-align:center;padding:4rem 1rem;">
+      <p style="color:var(--texto-claro);">⏳ Carregando detalhes...</p>
+    </div>
+
+    <!-- Estado: quarto não encontrado -->
+    <div id="estadoNaoEncontrado" style="display:none;text-align:center;padding:4rem 1rem;">
+      <p style="font-size:3rem;margin-bottom:1rem;">🔍</p>
+      <p style="color:var(--texto-claro);margin-bottom:1.5rem;">Quarto não encontrado.</p>
+      <a href="index.html" class="btn-primario">← Voltar ao Feed</a>
+    </div>
+
+    <!-- Conteúdo do quarto (aparece quando carregado) -->
+    <div id="conteudoDetalhes" style="display:none;">
+
+      <!-- Imagem grande (responsiva) -->
+      <div class="detalhes-imagem-wrap">
+        <img id="detalheImagem" src="" alt="" loading="eager">
+      </div>
+
+      <!-- Corpo com informações -->
+      <div class="detalhes-corpo container" style="max-width:42rem;">
+
+        <!-- Tipo e status -->
+        <div style="display:flex;align-items:center;gap:0.75rem;margin-bottom:0.75rem;flex-wrap:wrap;">
+          <span id="detalheTipo" class="detalhes-tipo-badge"></span>
+          <span id="detalheStatus" class="badge"></span>
+          <span id="detalheNumero" style="font-size:0.8rem;color:var(--texto-claro);"></span>
+        </div>
+
+        <!-- Título -->
+        <h1 id="detalheTitulo" class="detalhes-titulo"></h1>
+
+        <!-- Preço -->
+        <div id="detalhePreco" class="detalhes-preco-grande"></div>
+
+        <!-- Capacidade -->
+        <div style="color:var(--texto-claro);font-size:0.88rem;margin-bottom:1.25rem;">
+          <span id="detalheCapacidade"></span>
+        </div>
+
+        <!-- Linha divisória -->
+        <hr style="border:none;border-top:1px solid var(--bege-escuro);margin-bottom:1.25rem;">
+
+        <!-- Descrição completa -->
+        <p id="detalheDescricao" class="detalhes-descricao"></p>
+
+        <!-- Comodidades -->
+        <div id="detalheComodidadesSection">
+          <div class="detalhes-comodidades-titulo">Comodidades Incluídas</div>
+          <div id="detalheComodidades" class="detalhes-comodidades-lista"></div>
+        </div>
+
+        <!-- Data de cadastro -->
+        <p id="detalheData" style="font-size:0.78rem;color:var(--texto-claro);margin-bottom:2rem;"></p>
+
+        <!-- Botões de ação -->
+        <div class="detalhes-acoes">
+          <a href="reserva.html" id="btnReservar" class="btn-primario" style="text-align:center;display:block;">
+            🔑 Fazer Reserva
+          </a>
+          <a href="index.html" class="btn-secundario" style="text-align:center;display:block;">
+            ← Voltar ao Feed
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ========== BARRA DE NAVEGAÇÃO INFERIOR ========== -->
+  <nav class="nav-inferior" aria-label="Navegação principal">
+    <a href="index.html" class="nav-inferior-item">
+      <span class="nav-inferior-icone">🏠</span>
+      <span class="nav-inferior-texto">Início</span>
+    </a>
+    <a href="login.html?destino=cadastro" class="nav-inferior-item">
+      <span class="nav-inferior-icone">➕</span>
+      <span class="nav-inferior-texto">Cadastrar</span>
+    </a>
+    <a href="sobre.html" class="nav-inferior-item">
+      <span class="nav-inferior-icone">ℹ️</span>
+      <span class="nav-inferior-texto">Sobre</span>
+    </a>
+  </nav>
+
+  <!-- ========== SCRIPTS ========== -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script src="../js/firebase-config.js"></script>
+  <script src="../js/dados.js"></script>
+  <script src="../js/inicio.js"></script>
+
+  <script>
+    /* ============================================
+       detalhes.js (inline) — Carrega os detalhes
+       do quarto baseado no ?id= da URL
+       ============================================ */
+
+    /* Pega o ID do quarto da URL.
+       Exemplo: detalhes.html?id=q2  →  id = "q2" */
+    const urlParams = new URLSearchParams(window.location.search);
+    const quartoId  = urlParams.get('id');
+
+    // Mapeamento de status para classes de badge e texto
+    const CLASSES_STATUS = {
+      disponivel: 'badge-disponivel',
+      ocupado:    'badge-ocupado',
+      manutencao: 'badge-manutencao'
+    };
+    const TEXTO_STATUS = {
+      disponivel: '✅ Disponível',
+      ocupado:    '🔴 Ocupado',
+      manutencao: '🔧 Manutenção'
+    };
+
+    /* Função principal: busca o quarto e preenche a página */
+    function carregarDetalhes() {
+
+      // Verifica se veio um ID na URL
+      if (!quartoId) {
+        mostrarEstado('naoEncontrado');
+        return;
+      }
+
+      // Busca o quarto no localStorage (dados.js)
+      const quarto = buscarQuartoPorId(quartoId);
+
+      if (!quarto) {
+        mostrarEstado('naoEncontrado');
+        return;
+      }
+
+      // Preenche todos os elementos da página com os dados do quarto
+      preencherPagina(quarto);
+    }
+
+    /* Preenche a página com os dados do quarto */
+    function preencherPagina(quarto) {
+
+      // Imagem
+      const imgEl   = document.getElementById('detalheImagem');
+      imgEl.src     = quarto.imagem || '../assets/imagens/quarto-casal.png';
+      imgEl.alt     = quarto.titulo;
+      imgEl.onerror = function () {
+        this.src = '../assets/imagens/quarto-casal.png';
+      };
+
+      // Badge de tipo
+      document.getElementById('detalheTipo').textContent = quarto.tipo;
+
+      // Badge de status
+      const statusEl = document.getElementById('detalheStatus');
+      statusEl.textContent = TEXTO_STATUS[quarto.status] || quarto.status;
+      statusEl.className   = 'badge ' + (CLASSES_STATUS[quarto.status] || '');
+
+      // Número do quarto
+      if (quarto.numero && quarto.numero !== '---') {
+        document.getElementById('detalheNumero').textContent = 'Quarto nº ' + quarto.numero;
+      }
+
+      // Título da página e do H1
+      document.title              = quarto.titulo + ' — Hotel Auto Posto Itaguari';
+      document.getElementById('detalheTitulo').textContent = quarto.titulo;
+
+      // Preço formatado
+      document.getElementById('detalhePreco').innerHTML =
+        `<strong>R$ ${Number(quarto.preco).toLocaleString('pt-BR')}</strong>` +
+        `<small> / noite</small>`;
+
+      // Capacidade
+      const cap = Number(quarto.capacidade);
+      document.getElementById('detalheCapacidade').textContent =
+        `👥 Até ${cap} hóspede${cap > 1 ? 's' : ''}`;
+
+      // Descrição
+      document.getElementById('detalheDescricao').textContent = quarto.descricao;
+
+      // Comodidades (transforma array em tags visuais)
+      const comodEl  = document.getElementById('detalheComodidades');
+      const lista    = quarto.comodidades || [];
+
+      if (lista.length > 0) {
+        comodEl.innerHTML = lista.map(function (c) {
+          return `<span class="tag-comodidade">✓ ${c}</span>`;
+        }).join('');
+      } else {
+        document.getElementById('detalheComodidadesSection').style.display = 'none';
+      }
+
+      // Data de cadastro
+      if (quarto.data) {
+        document.getElementById('detalheData').textContent =
+          'Cadastrado em ' + formatarData(quarto.data);
+      }
+
+      // Atualiza o link de reserva com o ID do quarto
+      const numQuarto = quarto.id.replace('q', '');
+      document.getElementById('btnReservar').href = 'reserva.html?quarto=' + numQuarto;
+
+      // Exibe o conteúdo (estava escondido durante o carregamento)
+      mostrarEstado('conteudo');
+    }
+
+    /* Controla qual estado da UI mostrar */
+    function mostrarEstado(estado) {
+      document.getElementById('estadoCarregando').style.display    = estado === 'carregando' ? '' : 'none';
+      document.getElementById('estadoNaoEncontrado').style.display = estado === 'naoEncontrado' ? '' : 'none';
+      document.getElementById('conteudoDetalhes').style.display    = estado === 'conteudo' ? '' : 'none';
+    }
+
+    // Executa quando a página terminar de carregar
+    document.addEventListener('DOMContentLoaded', carregarDetalhes);
+  </script>
+
+</body>
+</html>
